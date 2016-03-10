@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver Coordenadas"
+            android:id="@+id/button2"
+            android:onClick="onclickReceptor" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver en el Mapa"
+            android:id="@+id/button3"
+            android:onClick="onclickBotonMapa" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grabar"
+            android:id="@+id/button5"
+            android:onClick="onclickGrabar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+            android:id="@+id/button4"
+            android:onClick="onclickbutton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentTop="true"
+        android:id="@+id/linearLayout">
+
+
+
+    <fragment
+        android:id="@+id/map"
+        class="com.example.pc.myapplicationmapaprueba.TestFragment"
+        android:layout_width="374dp"
+        android:layout_height="275dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+    </LinearLayout>
+
+</RelativeLayout>

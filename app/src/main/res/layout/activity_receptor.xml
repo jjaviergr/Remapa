@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        android:id="@+id/button2"
+        android:onClick="onclickbutton" />
+
+    <Button
+        android:layout_width="389dp"
+        android:layout_height="wrap_content"
+        android:text="Mostrar Mapa"
+        android:id="@+id/button5"
+        android:layout_gravity="right"
+        android:onClick="onclickBotonMapa" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText8"
+        android:layout_weight="0.85" />
+
+
+
+</LinearLayout>
