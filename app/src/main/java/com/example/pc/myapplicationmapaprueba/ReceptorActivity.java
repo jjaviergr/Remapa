@@ -1,5 +1,6 @@
 package com.example.pc.myapplicationmapaprueba;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -184,37 +185,41 @@ static String C;
             //tx.setText(imprime_coordenadas(BD.getAllCoordenadas()));
             //tx.setText(BD.getAllCoordenadas().size());
             // tx.setText(imprime_coordenadas(Vcoordenadas));
-            String cad = "";
-            for (int i = 0; i < Vcoordenadas.length; i++) {
+            try {
+                String cad = "";
+                for (int i = 0; i < Vcoordenadas.length; i++) {
 
-                for (int j = 0; j < Vcoordenadas[0].length; j++) {
-                    cad += Vcoordenadas[i][j];
+                    for (int j = 0; j < Vcoordenadas[0].length; j++) {
+                        cad += Vcoordenadas[i][j];
+                    }
                 }
-            }
-            String cadena = "";
-            String[] corte1 = cad.split("stringArray\\{");
+                String cadena = "";
+                String[] corte1 = cad.split("stringArray\\{");
 
-            ArrayList<ArrayList<String[]>> corte2 = new ArrayList<ArrayList<String[]>>();
-            for (int i = 0; i < corte1.length; i++) {
-                ArrayList<String[]> Elemento = new ArrayList<String[]>();
-                Elemento.add(corte1[i].split(";"));
-                corte2.add(Elemento);
-            }
-
-            for (int i = 0; i < corte2.size(); i++) {
-                for (int j = 0; j < corte2.get(i).size(); j++) {
-                    ArrayList<String[]> Elemento = corte2.get(i);
-                    for (int z = 0; z < Elemento.get(j).length; z++)
-                        cadena += Elemento.get(j)[z].toString().replaceAll("item=", "");
-                    cadena = cadena.replaceAll("\\}", "");
-                    cadena += '|';
+                ArrayList<ArrayList<String[]>> corte2 = new ArrayList<ArrayList<String[]>>();
+                for (int i = 0; i < corte1.length; i++) {
+                    ArrayList<String[]> Elemento = new ArrayList<String[]>();
+                    Elemento.add(corte1[i].split(";"));
+                    corte2.add(Elemento);
                 }
-            }
+
+                for (int i = 0; i < corte2.size(); i++) {
+                    for (int j = 0; j < corte2.get(i).size(); j++) {
+                        ArrayList<String[]> Elemento = corte2.get(i);
+                        for (int z = 0; z < Elemento.get(j).length; z++)
+                            cadena += Elemento.get(j)[z].toString().replaceAll("item=", "");
+                        cadena = cadena.replaceAll("\\}", "");
+                        cadena += '|';
+                    }
+                }
 
             /*for (int i = 0; i < corte2.size(); i++)
                 cadena+=corte2.get(i).toString()+";";*/
-            tx.setText(cadena);
-           C=cadena;
+                tx.setText(cadena);
+                C = cadena;
+            }
+            catch(Exception e)
+            {}
         }
 
         @Override
@@ -234,15 +239,27 @@ static String C;
     }
 
     public void onclickBotonMapa(View v) {
-        /*LinearLayout myContainer = (LinearLayout) findViewById(R.id.my_container);
-        int mapHeight = myContainer.getHeight();
-        int mapWidth = myContainer.getWidth();
+        /*lanza_activity.setOnClickListener(new View.OnClickListener() {
 
-        MapFragment mMapFragment = MapFragment.newInstance();
-        FragmentTransaction fragmentTransaction =
-                getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.my_container, mMapFragment);
-        fragmentTransaction.commit();*/
+            public void onClick(View v) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("messagef2", "Mensage de fragment2");
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ReceptorActivity.class);
+
+                getActivity().startActivity(intent);
+            }
+        });
+*/
+        Bundle bundle = new Bundle();
+        bundle.putString("datos", C);
+
+        Intent intent = new Intent();
+        intent.putExtras(bundle);
+
+        intent.setClass(this, TestFragmentActivity.class);
+        startActivity(intent);
     }
 
 }

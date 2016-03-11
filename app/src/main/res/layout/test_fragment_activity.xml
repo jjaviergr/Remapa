@@ -9,7 +9,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:layout_below="@+id/linearLayout"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout2"
+        android:layout_alignParentBottom="true">
 
         <Button
             android:layout_width="wrap_content"
@@ -38,6 +40,18 @@
             android:text="Salir"
             android:id="@+id/button4"
             android:onClick="onclickbutton" />
+
+        <TextView
+            android:layout_width="372dp"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textView3"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,14 +64,14 @@
 
 
 
-    <fragment
-        android:id="@+id/map"
-        class="com.example.pc.myapplicationmapaprueba.TestFragment"
-        android:layout_width="374dp"
-        android:layout_height="275dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        <fragment
+            android:id="@+id/map"
+            class="com.example.pc.myapplicationmapaprueba.TestFragment"
+            android:layout_width="374dp"
+            android:layout_height="275dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
     </LinearLayout>
 
 </RelativeLayout>
