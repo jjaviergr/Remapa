@@ -83,8 +83,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void dibujarLineas() {
 
-        String[] coordenadas=new String[ReceptorActivity.C.length()];
-        String[] matriz=ReceptorActivity.C.split("|");
+        String[] coordenadas=new String[ReceptorActivity.Coordenadas.length()];
+        String[] matriz=ReceptorActivity.Coordenadas.split("|");
 
         for (int i=0;i<matriz.length;i++)
         {

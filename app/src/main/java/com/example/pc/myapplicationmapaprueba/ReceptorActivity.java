@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class ReceptorActivity extends AppCompatActivity {
 
-static String C;
+    static String Coordenadas;
     private final String NAMESPACE = "http://rastreriza.esy.es";
     // private final String NAMESPACE = "http://192.168.1.10/receta_soap_wdsl";
     // private final String URL = "http://192.168.1.10/receta_soap_wdsl/servicio_con_wdsl.php?wsdl";
@@ -209,17 +209,31 @@ static String C;
                         for (int z = 0; z < Elemento.get(j).length; z++)
                             cadena += Elemento.get(j)[z].toString().replaceAll("item=", "");
                         cadena = cadena.replaceAll("\\}", "");
-                        cadena += '|';
+                        cadena += ' ';
                     }
                 }
-
-            /*for (int i = 0; i < corte2.size(); i++)
-                cadena+=corte2.get(i).toString()+";";*/
                 tx.setText(cadena);
-                C = cadena;
+
+
+               /* /////filtro solo coordenadas///
+                String[] arraycadena = cadena.split("|");
+                String coord = "";
+                String longitud, latitud;
+                String[] una_coordenada;
+
+                for (int i = 0; i < arraycadena.length; i++) {
+                    una_coordenada=arraycadena[i].split(" ");
+                    longitud = una_coordenada[1];
+                    latitud = una_coordenada[2];
+
+                    coord += longitud + " " + latitud+" ";
+                }
+*/
+
+                Coordenadas = cadena;
+            } catch (Exception e) {
+                tx.setText("Excepcion :" + e.getMessage().toString() + Coordenadas);
             }
-            catch(Exception e)
-            {}
         }
 
         @Override
@@ -252,11 +266,9 @@ static String C;
             }
         });
 */
-        Bundle bundle = new Bundle();
-        bundle.putString("datos", C);
 
         Intent intent = new Intent();
-        intent.putExtras(bundle);
+
 
         intent.setClass(this, TestFragmentActivity.class);
         startActivity(intent);

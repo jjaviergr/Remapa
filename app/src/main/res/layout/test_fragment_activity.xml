@@ -11,47 +11,39 @@
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout2"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:weightSum="1">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ver Coordenadas"
-            android:id="@+id/button2"
-            android:onClick="onclickReceptor" />
+            android:id="@+id/button2" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ver en el Mapa"
-            android:id="@+id/button3"
-            android:onClick="onclickBotonMapa" />
+            android:id="@+id/button3" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grabar"
-            android:id="@+id/button5"
-            android:onClick="onclickGrabar" />
+            android:id="@+id/button5" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Salir"
-            android:id="@+id/button4"
-            android:onClick="onclickbutton" />
+            android:id="@+id/button4" />
 
         <TextView
-            android:layout_width="372dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="New Text"
-            android:id="@+id/textView3"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/linearLayout2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/textView3" />
+
     </LinearLayout>
 
     <LinearLayout
