@@ -33,16 +33,39 @@
             android:text="Grabar Coordenadas"
             android:id="@+id/button5" />
 
-        <Button
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/salir"
-            android:id="@+id/button12"
-            android:layout_alignParentTop="true"
-            android:inputType="none"
-            android:width="190dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:gravity="fill_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Borrar"
+                android:id="@+id/button5"
+
+
+                android:layout_gravity="top|center"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentEnd="false"
+                android:width="190dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/salir"
+                android:id="@+id/button4"
+
+                android:layout_gravity="top|center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:inputType="none"
+                android:width="190dp" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.example.pc.myapplicationmapaprueba;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -9,10 +10,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +25,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Grabar_Coordenadas extends AppCompatActivity implements LocationListener {
+public class Grabar_Coordenadas extends Activity implements LocationListener {
 
 
     private final String NAMESPACE = "http://rastreriza.esy.es";
@@ -54,7 +52,7 @@ public class Grabar_Coordenadas extends AppCompatActivity implements LocationLis
     LocationManager locationManager;
     // Para almacenar la latitud y longitud
 
-    private String latitud,longitud,fecha;
+    private String latitud, longitud, fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +64,7 @@ public class Grabar_Coordenadas extends AppCompatActivity implements LocationLis
         tv6 = (EditText) findViewById(R.id.editText6);
         tv7 = (EditText) findViewById(R.id.editText7);
         //     obtenemos el servicio de posicionamiento
+        // obtenemos el servicio de posicionamiento
         this.locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (this.locationManager == null) {
             Toast.makeText(this, "Error al recuperar el GPS", Toast.LENGTH_LONG)
@@ -73,11 +72,18 @@ public class Grabar_Coordenadas extends AppCompatActivity implements LocationLis
         }
         // registramos la recepción de datos del GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Problema de permisos para el GPS", Toast.LENGTH_LONG)
-                    .show();
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30000, 20, (LocationListener) this);
+
+
 
         // wifi = new Wifi();
 
@@ -147,7 +153,35 @@ public class Grabar_Coordenadas extends AppCompatActivity implements LocationLis
         }
     }
 
-    private class AsyncCallWS extends AsyncTask<String[][], Void, Void> {
+    @Override
+    public void onLocationChanged(Location location) {
+        // guardamos los valores de latitud y longitud
+        this.lat = location.getLatitude();
+        this.lon = location.getLongitude();
+        tv5.setText(Double.toString(this.lat));
+        tv6.setText(Double.toString(this.lon));
+        tv7.setText(getFecha());
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+
+
+private class AsyncCallWS extends AsyncTask<String[][], Void, Void> {
         @Override
         protected Void doInBackground(String[][]... params) {
             Log.i(TAG, "doInBackground");
@@ -215,36 +249,7 @@ public class Grabar_Coordenadas extends AppCompatActivity implements LocationLis
 
 
 
-    @Override
-    public void onLocationChanged(Location location) {
-        // TODO Auto-generated method stub
 
-        // guardamos los valores de latitud y longitud
-        this.lat = location.getLatitude();
-        this.lon = location.getLongitude();
-        tv5.setText(Double.toString(this.lat));
-        tv6.setText(Double.toString(this.lon));
-        tv7.setText(getFecha());
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        // TODO Auto-generated method stub
-
-    }
 
 
 }

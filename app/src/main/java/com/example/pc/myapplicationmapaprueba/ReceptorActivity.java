@@ -33,6 +33,7 @@ public class ReceptorActivity extends AppCompatActivity {
     //private Gestiona_DB BD;
     private Button bt;
     private TextView tx;
+    private String cadena_s;
 
     private String auxiliar;
     private String[][] Vcoordenadas;
@@ -210,27 +211,44 @@ public class ReceptorActivity extends AppCompatActivity {
                             cadena += Elemento.get(j)[z].toString().replaceAll("item=", "");
                         cadena = cadena.replaceAll("\\}", "");
                         cadena += ' ';
+
                     }
                 }
-                tx.setText(cadena);
-
-
-               /* /////filtro solo coordenadas///
-                String[] arraycadena = cadena.split("|");
-                String coord = "";
-                String longitud, latitud;
-                String[] una_coordenada;
-
-                for (int i = 0; i < arraycadena.length; i++) {
-                    una_coordenada=arraycadena[i].split(" ");
-                    longitud = una_coordenada[1];
-                    latitud = una_coordenada[2];
-
-                    coord += longitud + " " + latitud+" ";
-                }
-*/
-
                 Coordenadas = cadena;
+
+
+                /*************
+                 * try {
+
+
+                 String cadena = ReceptorActivity.Coordenadas;
+                 String[] coordenadas = cadena.split(" ");
+
+                 String cad = "";
+                 for (int i = 2; i < coordenadas.length; i = i + 6) {
+                 cad += coordenadas[i] + " " + coordenadas[i + 1] + " ";
+
+                 }
+                 dibujarLineas(cad);
+                 } catch (Exception e) {
+
+                 //t.setText("Excepcion al filtrar coordenadas :" + e.getMessage().toString());
+                 }************/
+
+
+
+
+                String[] cadena_s=cadena.split(" ");
+                String cadena_muestra="";
+                for(int i=0;i<cadena_s.length;i=i+6)
+                {
+                    cadena_muestra+=cadena_s[2]+" "+cadena_s[3]+" "+cadena_s[4]+" "+cadena_s[5]+"\n\n";
+                }
+                tx.setText(cadena_muestra);
+
+
+
+
             } catch (Exception e) {
                 tx.setText("Excepcion :" + e.getMessage().toString() + Coordenadas);
             }
